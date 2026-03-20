@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio </title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="ai-assistant" id="aiAssistant">
+  <div class="ai-header">
+    <span class="ai-title"><i class="fas fa-robot"></i> AI Guide</span>
+    <button class="ai-minimize" id="aiMinimize"><i class="fas fa-minus"></i></button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-message bot">
+      <p>👋 Hello! I'm your AI guide. Ask me anything about the portfolio, skills, projects, or achievements!</p>
+    </div>
+  </div>
+  <div class="ai-input-area">
+    <input type="text" id="userInput" placeholder="Ask me something...">
+    <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+<header>
+<div class="header-content">
+  <div class="header-profile">
+    <img src="./Images/Profile%20pic.png" alt="Profile" class="profile-image" id="userProfileImage">
+  </div>
+  <h1>Abhinav Bajpai</h1>
+  <p>Undergraduate | Digital Business & Entrepreneurship | IIM Bangalore</p>
+  <div class="header-stats">
+    <div class="stat-item">
+      <span class="stat-number">4</span>
+      <span class="stat-label">Core Competencies</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">5</span>
+      <span class="stat-label">Achievements</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">2</span>
+      <span class="stat-label">Leadership Roles</span>
+    </div>
+  </div>
+</div>
+</header>
+<nav class="navbar">
+<div class="nav-container">
+  <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#skills">Competencies</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+</nav>
+<section id="about">
+<div class="section-header">
+  <h2><i class="fas fa-user-circle"></i> Curriculum Vitae </h2>
+  <p class="section-subtitle">Who am I and what drives my career</p>
+</div>
+<div class="profile-container">
+  <div class="profile-image-section">
+    <img src="./Images/Profile%20pic.png" alt="Abhinav Bajpai" class="large-profile-image" id="largeProfileImage">
+    <div class="profile-badges">
+      <div class="badge">
+        <i class="fas fa-star"></i>
+        <span>IIM Bangalore</span>
+      </div>
+      <div class="badge">
+        <i class="fas fa-award"></i>
+        <span>National Finalist</span>
+      </div>
+    </div>
+  </div>
+  <div class="profile-info">
+    <p>
+      Highly analytical undergraduate at Indian Institute of Management Bangalore,
+      specializing in Digital Business & Entrepreneurship with a foundational
+      background in Science (PCB).
+    </p>
+    <p>
+      Demonstrates strong capability in business strategy analysis, policy research,
+      leadership, and structured problem solving. Combines analytical reasoning from
+      scientific education with strategic thinking from business education.
+    </p>
+    <p>
+      Career interests include Public Policy, Government Strategy, Digital Economy
+      Regulation, Startup Ecosystems, Business Strategy Consulting, and
+      Institutional Governance.
+    </p>
+    <div class="cta-buttons">
+      <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView()">
+        <i class="fas fa-envelope"></i> Get in Touch
+      </button>
+      <button class="btn btn-secondary" onclick="downloadResume()">
+        <i class="fas fa-download"></i> Download Resume
+      </button>
+    </div>
+  </div>
+</div>
+<div class="institutions-showcase">
+  <h3><i class="fas fa-building"></i> Educational Institutions</h3>
+  <div class="institutions-grid">
+    <div class="institution-card">
+      <img src="./Images/iim logo.png" alt="IIM Bangalore" class="institution-logo">
+      <h4>IIM Bangalore</h4>
+      <p>BBA in Digital Business & Entrepreneurship</p>
+      <p class="year">2025 - 2028</p>
+    </div>
+    <div class="institution-card">
+      <img src="./Images/laxman_logo.jpg" alt="Laxman Public School" class="institution-logo">
+      <h4>Laxman Public School</h4>
+      <p>SCIENCE (BIOLOGY)</p>
+      <p class="year">Class of 2024</p>
+    </div>
+  </div>
+</div>
+</section>
+<section id="analytics">
+<div class="section-header">
+  <h2><i class="fas fa-chart-pie"></i> Career Analytics</h2>
+  <p class="section-subtitle">Visualizing skills, achievements, and experiences</p>
+</div>
+<div class="analytics-grid">
+  <div class="chart-container">
+    <h3>Competency Distribution</h3>
+    <canvas id="skillsChart"></canvas>
+  </div>
+  <div class="chart-container">
+    <h3>Skills Proficiency</h3>
+    <canvas id="proficiencyChart"></canvas>
+  </div>
+  <div class="chart-container">
+    <h3>Achievement Categories</h3>
+    <canvas id="achievementChart"></canvas>
+  </div>
+  <div class="chart-container">
+    <h3>Career Focus Areas</h3>
+    <canvas id="focusChart"></canvas>
+  </div>
+</div>
+<div class="metrics-row">
+  <div class="metric-card">
+    <div class="metric-value">8+</div>
+    <div class="metric-label">Years of Academic Excellence</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-value">200+</div>
+    <div class="metric-label">Students Led</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-value">15+</div>
+    <div class="metric-label">Competitions Participated</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-value">100%</div>
+    <div class="metric-label">Commitment to Excellence</div>
+  </div>
+</div>
+</section>
+<section id="skills">
+<div class="section-header">
+  <h2><i class="fas fa-star"></i> Core Competencies</h2>
+  <p class="section-subtitle">Structured expertise across strategic domains</p>
+</div>
+<div class="skills-advanced">
+  <div class="skill-category">
+    <div class="category-header">
+      <i class="fas fa-chess-rook"></i>
+      <h3>Strategic & Analytical</h3>
+    </div>
+    <div class="skill-items">
+      <div class="skill-item" data-skill="Strategic Problem Solving" data-level="95">
+        <div class="skill-name">Strategic Problem Solving</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Market Analysis" data-level="88">
+        <div class="skill-name">Market Analysis</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 88%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Data Interpretation" data-level="90">
+        <div class="skill-name">Data Interpretation</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Business Case Analysis" data-level="87">
+        <div class="skill-name">Business Case Analysis</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 87%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Policy Evaluation" data-level="85">
+        <div class="skill-name">Policy Evaluation</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 85%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category">
+    <div class="category-header">
+      <i class="fas fa-rocket"></i>
+      <h3>Business & Entrepreneurship</h3>
+    </div>
+    <div class="skill-items">
+      <div class="skill-item" data-skill="Startup Growth Strategy" data-level="92">
+        <div class="skill-name">Startup Growth Strategy</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 92%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Digital Acquisition Funnels" data-level="89">
+        <div class="skill-name">Digital Acquisition Funnels</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 89%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Platform Business Models" data-level="86">
+        <div class="skill-name">Platform Business Models</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 86%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Market Research" data-level="91">
+        <div class="skill-name">Market Research</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 91%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Consumer Behaviour" data-level="84">
+        <div class="skill-name">Consumer Behaviour</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 84%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skill-category">
+    <div class="category-header">
+      <i class="fas fa-gavel"></i>
+      <h3>Policy & Governance</h3>
+    </div>
+    <div class="skill-items">
+      <div class="skill-item" data-skill="Legislative Interpretation" data-level="88">
+        <div class="skill-name">Legislative Interpretation</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 88%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Public Policy Research" data-level="93">
+        <div class="skill-name">Public Policy Research</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 93%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Government Scheme Analysis" data-level="87">
+        <div class="skill-name">Government Scheme Analysis</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 87%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Regulatory Evaluation" data-level="86">
+        <div class="skill-name">Regulatory Evaluation</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 86%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skill-category">
+    <div class="category-header">
+      <i class="fas fa-handshake"></i>
+      <h3>Leadership</h3>
+    </div>
+    <div class="skill-items">
+      <div class="skill-item" data-skill="Team Leadership" data-level="94">
+        <div class="skill-name">Team Leadership</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 94%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Stakeholder Communication" data-level="91">
+        <div class="skill-name">Stakeholder Communication</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 91%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Conflict Resolution" data-level="89">
+        <div class="skill-name">Conflict Resolution</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 89%"></div>
+        </div>
+      </div>
+      <div class="skill-item" data-skill="Decision Making" data-level="92">
+        <div class="skill-name">Decision Making</div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 92%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<section id="education">
+<div class="section-header">
+  <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+  <p class="section-subtitle">Academic journey and credentials</p>
+</div>
+<div class="education-timeline">
+  <div class="edu-card edu-card-primary">
+    <div class="edu-icon">
+      <i class="fas fa-university"></i>
+    </div>
+    <div class="edu-content">
+      <h3>Indian Institute of Management Bangalore</h3>
+      <p class="edu-degree">Bachelor of Business Administration</p>
+      <p class="edu-stream">Digital Business & Entrepreneurship</p>
+      <p class="edu-year"><i class="fas fa-calendar-alt"></i> 2025 – 2028</p>
+      <div class="edu-highlights">
+        <span class="highlight">• Rigorous curriculum</span>
+        <span class="highlight">• Industry exposure</span>
+        <span class="highlight">• Entrepreneurship focus</span>
+      </div>
+    </div>
+  </div>
+  <div class="edu-card edu-card-secondary">
+    <div class="edu-icon">
+      <i class="fas fa-school"></i>
+    </div>
+    <div class="edu-content">
+      <h3>Laxman Public School – CBSE</h3>
+      <p class="edu-degree">Class XII – Science (PCB)</p>
+      <p class="edu-score"><strong>Score: 76.4%</strong></p>
+      <div class="edu-highlights">
+        <span class="highlight">• Strong foundation in sciences</span>
+        <span class="highlight">• Analytical skills developed</span>
+        <span class="highlight">• Leadership roles undertaken</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<section id="projects">
+<div class="section-header">
+  <h2><i class="fas fa-project-diagram"></i> Business Projects</h2>
+  <p class="section-subtitle">Real-world business analysis and strategic insights</p>
+</div>
+<div class="projects-grid">
+  <div class="project-card">
+    <div class="project-badge">Featured</div>
+    <div class="project-header">
+      <i class="fas fa-plane"></i>
+      <h3>Marketing Strategy Analysis</h3>
+    </div>
+    <p class="project-description">
+      Strategic analysis of digital platform growth models in the travel industry.
+      Companies analyzed included MakeMyTrip and OYO.
+    </p>
+    <div class="project-insights">
+      <h4><i class="fas fa-lightbulb"></i> Key Insights</h4>
+      <ul>
+        <li>Digital Acquisition Funnel Analysis</li>
+        <li>Consumer Engagement Strategy</li>
+        <li>Platform Scaling Mechanisms</li>
+        <li>Community Driven Growth Models</li>
+      </ul>
+    </div>
+    <div class="project-tags">
+      <span class="tag">Strategy</span>
+      <span class="tag">Digital</span>
+      <span class="tag">Platform</span>
+      <span class="tag">Growth</span>
+    </div>
+    <button class="btn-expand" onclick="toggleProject(this)">
+      <i class="fas fa-chevron-down"></i> Learn More
+    </button>
+    <div class="project-details">
+      <h4>Detailed Analysis</h4>
+      <p><strong>Methodology:</strong> Conducted comprehensive market analysis using primary and secondary research, competitor benchmarking, and user behavior studies.</p>
+      <p><strong>Key Findings:</strong> Identified critical success factors in platform scaling, customer acquisition optimization, and retention strategies for travel tech platforms.</p>
+      <p><strong>Recommendations:</strong> Provided actionable recommendations for growth optimization based on data-driven insights and market trends.</p>
+    </div>
+  </div>
+</div>
+</section>
+<section id="leadership">
+<div class="section-header">
+  <h2><i class="fas fa-crown"></i> Leadership Experience</h2>
+  <p class="section-subtitle">Demonstrated leadership across multiple domains</p>
+</div>
+<div class="leadership-container">
+  <div class="leadership-card">
+    <div class="leadership-icon">
+      <i class="fas fa-people-arrows"></i>
+    </div>
+    <h3>House Captain</h3>
+    <p class="leadership-details">Led governance for 200+ students and coordinated school competitions.</p>
+    <div class="leadership-metrics">
+      <div class="metric">
+        <span class="metric-num">200+</span>
+        <span class="metric-text">Students Led</span>
+      </div>
+      <div class="metric">
+        <span class="metric-num">10+</span>
+        <span class="metric-text">Competitions</span>
+      </div>
+    </div>
+    <div class="leadership-skills">
+      <span class="skill-badge">Governance</span>
+      <span class="skill-badge">Organization</span>
+      <span class="skill-badge">Decision Making</span>
+    </div>
+  </div>
+  <div class="leadership-card">
+    <div class="leadership-icon">
+      <i class="fas fa-football-ball"></i>
+    </div>
+    <h3>Football Team Captain & Goalkeeper</h3>
+    <p class="leadership-details">Led defensive strategy and team coordination in interschool tournaments.</p>
+    <div class="leadership-metrics">
+      <div class="metric">
+        <span class="metric-num">15+</span>
+        <span class="metric-text">Matches Led</span>
+      </div>
+      <div class="metric">
+        <span class="metric-num">5+</span>
+        <span class="metric-text">Tournaments</span>
+      </div>
+    </div>
+    <div class="leadership-skills">
+      <span class="skill-badge">Team Strategy</span>
+      <span class="skill-badge">Sportsmanship</span>
+      <span class="skill-badge">Pressure Management</span>
+    </div>
+  </div>
+</div>
+</section>
+<section id="timeline">
+<div class="section-header">
+  <h2><i class="fas fa-hourglass-half"></i> Career Timeline</h2>
+  <p class="section-subtitle">Journey of achievements and milestones</p>
+</div>
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h4>2025 – Present</h4>
+      <p><strong>IIM Bangalore BBA Student</strong></p>
+      <p>Pursuing specialized education in Digital Business & Entrepreneurship</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h4>2025</h4>
+      <p><strong>Finalist.-.National Case Competition (IIT BHU)</strong></p>
+      <p>Demonstrated strategic thinking and analytical excellence</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h4>2024</h4>
+      <p><strong>Runner-Up – Interschool Academic Quiz</strong></p>
+      <p>Showcased breadth of knowledge and quick thinking</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h4>2023-2024</h4>
+      <p><strong>Leadership Positions</strong></p>
+      <p>Served as House Captain and Football Team Captain</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h4>2023</h4>
+      <p><strong>Winner – Biology Gene Pool Workshop</strong></p>
+      <p>Excellence in scientific understanding and application</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h4>2023</h4>
+      <p><strong>MUN Participant</strong></p>
+      <p>Developed diplomatic and public speaking skills</p>
+    </div>
+  </div>
+</div>
+</section>
+<section id="achievements">
+<div class="section-header">
+  <h2><i class="fas fa-trophy"></i> Achievements</h2>
+  <p class="section-subtitle">Recognition of excellence and leadership</p>
+</div>
+<div class="achievements-container">
+  <div class="achievement-card achievement-gold">
+    <div class="achievement-icon">
+      <i class="fas fa-medal"></i>
+    </div>
+    <h3>National Finalist – Strat-Impact Competition</h3>
+    <p>Qualified for Final Round at Jagriti 2026, IIT (BHU) Varanasi</p>
+    <span class="achievement-badge">National Level</span>
+    <p class="achievement-date">February 2026</p>
+  </div>
+  <div class="achievement-card achievement-silver">
+    <div class="achievement-icon">
+      <i class="fas fa-award"></i>
+    </div>
+    <h3>Runner-Up – Interschool Academic Quiz</h3>
+    <p>Demonstrated comprehensive knowledge and quick response</p>
+    <span class="achievement-badge">School Level</span>
+  </div>
+  <div class="achievement-card achievement-bronze">
+    <div class="achievement-icon">
+      <i class="fas fa-star"></i>
+    </div>
+    <h3>Winner – Biology Gene Pool Workshop</h3>
+    <p>Excellence in scientific research and practical application</p>
+    <span class="achievement-badge">Science Track</span>
+  </div>
+  <div class="achievement-card achievement-honor">
+    <div class="achievement-icon">
+      <i class="fas fa-handshake"></i>
+    </div>
+    <h3>Model United Nations Participant</h3>
+    <p>Developed diplomatic communication and policy understanding</p>
+    <span class="achievement-badge">Soft Skills</span>
+  </div>
+</div>
+<div class="achievements-gallery">
+  <h3><i class="fas fa-images"></i> Achievement Gallery</h3>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="./Images/IIT%20BHU%20%20merit%20certificate%20for.jpeg" alt="Strat Impact Certificate" class="gallery-image">
+      <p>National Finalist Certificate - Strat Impact 2026</p>
+    </div>
+    <div class="gallery-item">
+      <img src="C:\Users\Pc\Desktop\OPREX-LB\Images\Gemini_Generated_Image_2vf5el2vf5el2vf5.png" alt="Academic Achievement" class="gallery-image">
+      <p>Interschool Academic Competition</p>
+    </div>
+    <div class="gallery-item">
+      <img src=".\Images\lab gene extraction.jpeg" alt="Science Workshop" class="gallery-image">
+      <p>Biology Gene Pool Workshop Winner</p>
+    </div>
+    <div class="gallery-item">
+      <img src="/Images/Mun certificate of merit.jpeg" alt="MUN Participation" class="gallery-image">
+      <p>Model United Nations Delegate</p>
+    </div>
+  </div>
+</div>
+</section>
+<section id="contact">
+<div class="section-header">
+  <h2><i class="fas fa-at"></i> Get in Touch</h2>
+  <p class="section-subtitle">Let's connect and explore opportunities</p>
+</div>
+<div class="contact-container">
+  <div class="contact-form">
+    <h3>Send Me a Message</h3>
+    <form id="contactForm" onsubmit="handleContactForm(event)">
+      <div class="form-group">
+        <input type="text" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Subject" required>
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+    </form>
+  </div>
+  <div class="contact-info">
+    <h3>Direct Contact</h3>
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <div>
+        <p>Email</p>
+        <a href="mailto:abhinav.bajpai25@iimb.ac.in">abhinav.bajpai25@iimb.ac.in</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-linkedin"></i>
+      <div>
+        <p>LinkedIn</p>
+        <a href="https://www.linkedin.com/in/abhinav-bajpai-a68bb3384/" target="_blank">linkedin.com/in/abhinav-bajpai</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <div>
+        <p>Location</p>
+        <p>New Delhi, India</p>
+      </div>
+    </div>
+    <div class="social-links">
+      <h4>Follow Me</h4>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/abhinav-bajpai-a68bb3384/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/abhinavbajpai-ops" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:abhinav.bajpai25@iimb.ac.in" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<footer>
+  <p>©Portfolio of Abhinav Bajpai.</p>
+  <p class="footer-tech">Built with HTML5 • CSS3 • JavaScript • Chart.js </p>
+</footer>
+</body>
+<script src="script.js"></script>
+</html>
